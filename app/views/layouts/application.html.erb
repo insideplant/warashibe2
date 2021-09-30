@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warashibe</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <%= link_to "わらしべぇ～",root_path %>
+      </h1>
+      <div class="pc-menu">
+        <nav>
+          <ul>
+            <% if user_signed_in? %>
+              <li><%= link_to "Warashibe",root_path %></li>
+              <li><%= link_to "Mypage",current_user %></li>
+              <li><%= link_to "Offers",followers_user_path(current_user) %></li>
+              <li><%= link_to "Log out",destroy_user_session_path, method: :delete %> </li>
+            <% else %>
+              <li class="modalopen"><span>Log in</span></li>
+              <li><%= link_to "Sign up",new_user_registration_path %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="sp-menu">
+        <span class="material-icons" id="open">menu</span>
+      </div>
+
+    </header>
+
+    <%= yield %>
+
+
+    <footer id="footer">
+　　　<p>Copyright (C) All Rights Reserved.</p>
+　　</footer>
+
+  </body>
+</html>

@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="mypage">
+    <div class="profile-box">
+      <div class="profile">
+        <div>
+          <% if @user.avatar?%>
+            <%= image_tag @user.image, size: '100x100', class:"icon" %>
+          <% else %>
+            <%= image_tag 'default.png', size: '100x100', class:"icon" %>
+          <% end %>
+        </div>
+        <div>
+          <h1><%= @user.name %></h1>
+          <ul>
+            <li>
+              <%= link_to edit_user_registration_path do %><span class="material-icons md-dark">manage_accounts</span><% end %>
+            </li>
+            <li>
+              <span class="material-icons md-dark">photo_camera</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% unless @uploaded_items.present? %>
+        <div class="modalopen item_button">
+          <button>アイテム登録</button>
+        </div>
+      <% end %>
+
+      <div class="item">
+        <h3>Item Name</h3>
+        <div class="item_name">
+          <% if @uploaded_items.present? %>
+            <%= @uploaded_items.name %>
+          <% end %>
+        </div>
+
+        <h3>Item info</h3>
+        <div class="item_info">
+          <% if @uploaded_items.present? %>
+            <%= @uploaded_items.info %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="album">
+      <div class="image_box">
+        <% if @uploaded_items.present? %>
+          <%= image_tag @uploaded_items.itemimage.url, size: '400x266', class:"icon" %>
+          <h2><%= @uploaded_items.name %></h2>
+        <% else %>
+          <%= image_tag 'warashibe.png', width: '70%'%>
+        <% end %>
+      </div>
+
+      <% unless current_user?(@user) || current_user.following.present? %>
+          <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
+            <%= hidden_field_tag :followed_id, @user.id %>
+            <%= f.submit "オファーする", class: "offer_button" %>
+          <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <div id="modal2" class="hidden" >
+    <h1>Warashibe アイテム</h1>
+    <p>Warashibeを開始するにあたり一番最初の交換アイテムとなります。
+    こちらのアイテムは一度決定すると二度と変更できません。</p>
+    <div id="beforeUpload">
+      <span class="material-icons">image</span>
+      <image id="cpi" src="">
+    </div>
+    <div class="modal2_form">
+      <%= form_with model: @item, url: items_path do |f| %>
+        <%= f.file_field :itemimage %>
+
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name, :placeholder => "Enter your Item...", autofocus: true %>
+      </div>
+      <div class="field">
+        <%= f.label :info %><br />
+        <%= f.text_area :info, :placeholder => "Enter your Item info...", autofocus: true, autocomplete: "email"  %>
+      </div>
+      <div class="field">
+        <%= f.submit '登録',id: 'submit' %>
+      </div>
+      <% end %>
+    </div>
+    <div id="submit2">
+      AAA
+    </div>
+    <div class="shut">
+      閉じる
+    </div>
+  </div>
+
+  <div id="modal3" class="hidden" >
+    <div id="cropper-area">
+      <img id="cropp-image" src="">
+    </div>
+    <button id="crop-btn">切り抜き</button>
+  </div>
+
+</div>
+
+<div class="mask hidden"></div>
+
+<%= javascript_include_tag "login.js" %>
+<%= javascript_include_tag "crop_image.js" %>

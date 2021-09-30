@@ -1,0 +1,24 @@
+<div class="top_image">
+  <%= image_tag 'warashibe.png', width: '20%', height: '20%' %>
+</div>
+
+
+<% @items.each do |item|%>
+
+<div class="container">
+  <div class="flex-col2">
+    <div class="flex-child">
+      <%= link_to user_path(item.user) do%>
+        <%= image_tag item.itemimage.url, size: '160x120' %>
+      <% end %>
+    </div>
+    <div class="flex-child">
+      <%= item.name %>
+    </div>
+  </div>
+</div>
+<% end %>
+
+ <%= render "public/homes/login_modal" %>
+
+<%= javascript_include_tag "login.js" %>

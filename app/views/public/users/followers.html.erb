@@ -1,0 +1,60 @@
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>
+          NO.
+        </th>
+        <th>
+          picture
+        </th>
+        <th>
+          item name
+        </th>
+        <th>
+          user name
+        </th>
+        <th>
+          item info
+        </th>
+        <th>
+          offerを受ける
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% i = 0 %>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%= i+=1 %>
+        </td>
+        <td>
+          <%= image_tag user.item.itemimage.url, size: '120x80' %>
+        </td>
+        <td>
+          <%= user.item.name %>
+        </td>
+        <td>
+          <%= user.name %>
+        </td>
+        <td>
+          <%= user.item.info %>
+        </td>
+        <td>
+          <%= form_with(model: user.active_relationships.find_by(followed_id: current_user),
+             html: { method: :delete }, remote: true) do |f| %>
+              <%= f.hidden_field :useritem_name, :value =>  user.item.name  %>
+              <%= f.hidden_field :useritem_info, :value =>  user.item.info  %>
+              <%= f.hidden_field :useritem_itemimage, :value =>  user.item.itemimage.url  %>
+              <%= f.hidden_field :currentitem_name, :value => current_user.item.name %>
+              <%= f.hidden_field :currentitem_info, :value => current_user.item.info %>
+              <%= f.hidden_field :currentitem_itemimage, :value => current_user.item.itemimage.url %>
+            <%= f.submit "交換する", class: "btn" %>
+          <% end %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

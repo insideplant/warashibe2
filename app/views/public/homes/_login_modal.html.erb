@@ -1,0 +1,30 @@
+<section id="modal" class="hidden">
+  <div id="login" >
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <div>
+        <%= f.email_field :email, :placeholder => "Enter your email...", autofocus: true, autocomplete: "email", :class => 'login_input' %>
+      </div>
+
+      <div>
+        <%= f.password_field :password, :placeholder => "Password", autocomplete: "current-password", :class => 'login_input' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div>
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div>
+        <%= f.submit "Log in", :class => 'login_input' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="shut">
+    閉じる
+  </div>
+</section>
+<div class="mask hidden"></div>

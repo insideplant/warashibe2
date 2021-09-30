@@ -1,0 +1,644 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require cropper.min.css
+ *= require_self
+ */
+
+/*リセットCSS*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  height: 100%;
+  padding-top: 64px;
+}
+
+
+h1,
+h2,
+p{
+  margin: 0;
+}
+
+h1,
+h2,
+p{
+  padding: 0;
+}
+
+/* common */
+.container{
+  margin: 0 auto;
+  width: 90%;
+}
+
+input:focus::placeholder {
+  color: #c5c5c5;
+}
+
+textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
+  outline: none;
+  box-shadow: none;
+  border: 2px solid #FF9800;
+  background-color: #ffffff;
+}
+
+/* header */
+header {
+  width: 100%;
+  padding: 0px 4%;
+  background: white;
+  position: fixed;
+  top: 0;
+  display: flex;
+  align-items: center;
+  z-index: 2
+}
+
+header h1 a {
+  font-size: 32px;
+  line-height: 64px;
+  color: yellow;
+  text-decoration: none;
+  text-shadow:1px 1px 0 black, -1px -1px 0 black,
+              -1px 1px 0 black, 1px -1px 0 black,
+              0px 1px 0 black,  0-1px 0 black,
+              -1px 0 0 black, 1px 0 0 black;
+}
+
+/* footer */
+#footer {
+  border-top: solid 1px lightgray;
+  padding-bottom: 10px;
+  margin-top: 64px;
+}
+
+#footer p {
+  text-align: center;
+}
+
+
+/*navbar*/
+.pc-menu nav {
+  margin: 0 0 0 auto;
+}
+
+
+.pc-menu nav ul {
+  list-style-type: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.pc-menu nav ul li {
+  margin: 0 10px;
+}
+
+.pc-menu nav ul li a,span {
+  display: block;
+  width: 80px;
+  text-decoration: none;
+  text-align: center;
+  line-height: 64px;
+}
+
+.pc-menu nav li:hover {
+  background-color: #f2f2f2;
+}
+
+.dropdown-child > dropdown_menu {
+  left: 0px;
+  top: 64px;
+  display: none;
+  position: absolute;
+}
+
+.sp-menu {
+  margin-left: auto;
+}
+
+.sp-menu #open {
+  font-size: 32px;
+  line-height: 64px;
+  cursor: pointer;
+}
+
+.sp-menu #open.hide {
+  display: none;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255,255,255,0.95);
+  text-align: center;
+  padding: 64px;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.overlay.show {
+  opacity: 0.8;
+  pointer-events: auto;
+}
+
+.overlay #close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.overlay ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay li {
+  margin-top : 24px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .3s, transform .3s;
+}
+
+.overlay.show li {
+  opacity: 1;
+  transform: none;
+}
+
+.overlay.show.li:nth-child(1) {
+  transition-delay: .1s;
+}
+.overlay.show.li:nth-child(2) {
+  transition-delay: .2s;
+}
+
+.pc-menu {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .pc-menu {
+    display: block;
+    margin-left: auto;
+  }
+  .sp-menu {
+    display: none;
+  }
+}
+
+/* top */
+
+.top_image {
+  margin-top: 64px;
+  margin-bottom: 64px;
+  text-align: center;
+}
+
+/* sign-up */
+.sign-up {
+  background: #FFFFBB;
+  display: flex;
+}
+
+.sign-up .container {
+  display: flex;
+  justify-content: center;
+}
+
+.left-content {
+  width: 400px;
+  text-align: center;
+}
+
+.right-content {
+  width: 300px;
+}
+
+.right-content input {
+  width: 230px;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+/* user-edit */
+.user-edit {
+  background: #FFFFBB;
+  display: flex;
+}
+
+.edit-content {
+  width: 550px;
+  margin: 0 auto;
+}
+
+.edit-content input {
+  width: 550px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.edit-content .field {
+  margin-bottom: 20px;
+}
+
+.content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.cancel {
+  margin: 20px 0px;
+}
+
+
+
+
+/* modal login */
+
+#login div{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#login .login_input {
+  width: 230px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.modalopen{
+  cursor: pointer;
+}
+
+.shut{
+  cursor: pointer;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-align: center;
+  padding: 12px 0;
+  margin: 16px auto;
+}
+
+.mask {
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+
+#modal {
+  border: solid;
+  z-index: 2;
+  background: #fff;
+  width: 300px;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: transform 0.4s;
+}
+
+#modal > p {
+  margin: 0 0 20px;
+}
+
+.mask.hidden{
+  display: none;
+}
+
+#modal.hidden{
+  transform: translate(0, -800px);
+}
+
+
+/*profile*/
+.mypage {
+  margin-top: 10px;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-box {
+  width: 450px;
+  margin: 0 auto;
+  border: solid 1px blue;
+  background-color: #FFFFCC;
+  color: black;
+  border-radius: 10%;
+}
+
+.profile {
+  display: flex;
+  padding: 32px;
+  align-items: center;
+}
+
+.profile-box .profile div + div {
+  margin-left: 32px;
+}
+
+.profile-box h1 {
+  font-size: 24px;
+}
+
+.profile ul {
+  list-style: none;
+  display: flex;
+}
+
+.profile ul li {
+  width: 50px;
+}
+
+.profile ul li span {
+  text-align: start;
+  width: 50px;
+}
+
+.profile .icon {
+  border-radius: 50%;
+}
+
+.profile-box .follow-link ul {
+  list-style: none;
+  display: flex;
+}
+
+.profile-box .follow-link ul li{
+  margin: 20px;
+}
+
+
+/* album */
+.album {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.album .image_box {
+  height: 266px;
+  border: 1px solid red;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+
+
+#croppedImage {
+  width: 300px;
+  height: 200px;
+  vertical-align: bottom;
+  margin-bottom: 8px;
+}
+
+.album ul {
+  list-style: none;
+}
+
+.thumbnails {
+  display: grid;
+  grid-template-columns: repeat(5,56px);
+  gap: 5px;
+}
+
+.thumbnails li {
+  cursor: pointer;
+  opacity: 0.4;
+}
+
+.thumbnails li:hover,
+.thumbnails li.current {
+  opacity: 1;
+}
+
+.thumbnails img {
+  width: 56px;
+}
+
+.offer_button {
+  width: 100%;
+  height: 30px;
+}
+
+
+/* New Item */
+#modal2 {
+  border: solid;
+  z-index: 2;
+  background: #fff;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: transform 0.4s;
+}
+
+#modal2 input {
+  width: 456px;
+  padding: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+#modal2 textarea {
+  width: 456px;
+  padding: 10px;
+  line-height: 50px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#modal2.hidden{
+  transform: translate(0, -800px);
+}
+
+/* cropping image */
+#modal3 {
+  border: solid;
+  z-index: 2;
+  background: #fff;
+  width: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: transform 0.4s;
+}
+
+#modal3.hidden{
+  transform: translate(0, -600px);
+}
+
+.cropper-area img {
+  display: block;
+  max-width: 100%;
+}
+
+#beforeUpload {
+  width: 100px;
+}
+
+#beforeUpload img {
+  width: 100%;
+}
+
+/* Item 情報 */
+
+.item {
+  padding: 10px;
+}
+
+.item_name {
+  padding: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: white;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+.item_info {
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  background: white;
+  height: 60px;
+  border-radius: 20px;
+  border: 1px solid black;
+}
+
+.item_button {
+  padding: 10px;
+}
+
+.item_button button {
+  width:  100%;
+  border-radius: 10px;
+}
+
+/* フレックスボックスの基本設定 等間隔（両端揃え）折返しあり */
+[class^="flex-col"] {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+/* コンテンツ下のマージン */
+.flex-child { margin-bottom: 10px; }
+
+/* 各カラム毎のコンテンツと疑似要素の横幅 */
+.flex-col2 .flex-child { width: calc( (100% - 10px) / 2 ); }
+
+.flex-col3::after,
+.flex-col3 .flex-child { width: calc( (100% - 20px) / 3 ); }
+
+.flex-col4::before,
+.flex-col4::after,
+.flex-col4 .flex-child { width: calc( (100% - 30px) / 4 ); }
+
+/* 最終行は両端揃えにしない */
+.flex-col3::after,
+.flex-col4::before,
+.flex-col4::after { content: ""; }
+
+.flex-col4::before { order: 1; }
+
+/* レスポンシブ対応 */
+
+/* 991px以下で4列 → 3列 */
+@media screen and (max-width: 991px) {
+	.flex-col4::after,
+	.flex-col4 .flex-child { width: calc( (100% - 20px) / 3 ); }
+}
+
+/* 767px以下で4列・3列 → 2列 */
+@media screen and (max-width: 767px) {
+	.flex-col3 .flex-child,
+	.flex-col4 .flex-child { width: calc( (100% - 10px) / 2 ); }
+}
+
+/* 575px以下で全て1列 */
+@media screen and (max-width: 575px) {
+	.flex-col2 .flex-child,
+	.flex-col3 .flex-child,
+	.flex-col4 .flex-child { width: 100%; }
+}
+
+/* table */
+
+table{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+table tr{
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+table tr:hover{
+  background-color: #d4f0fd;
+}
+
+table th,table td{
+  text-align: center;
+  padding: 15px 0;
+}
+
