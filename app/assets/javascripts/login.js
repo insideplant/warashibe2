@@ -5,6 +5,7 @@
   const shut = document.querySelector('.shut');
   const modal = document.getElementById('modal');
   const modal2 = document.getElementById('modal2');
+  const modal3 = document.getElementById('modal3');
   const mask = document.querySelector('.mask');
 
   modalopen.forEach((moda) => {
@@ -20,7 +21,7 @@
   });
 
   mask.addEventListener('click',()=>{
-    (modal || modal2).classList.add('hidden');
+    (modal || modal3).classList.add('hidden');
     mask.classList.add('hidden');
   });
 }

@@ -10,11 +10,15 @@ class Public::RelationshipsController < ApplicationController
     # データの交換
     item1 = Item.find(user.item.id)
     item2 = Item.find(current_user.item.id)
-
+    item1.remove_itemimage!
     item1.itemimage = params[:relationship][:currentitem_itemimage]
-    item1.update(name: params[:relationship][:currentitem_name],info: params[:relationship][:currentitem_info])
+    binding.pry
+    item1.save
+    #item1.update(name: params[:relationship][:currentitem_name],info: params[:relationship][:currentitem_info])
+    item2.remove_itemimage!
     item2.itemimage = params[:relationship][:useritem_itemimage]
-    item2.update(name: params[:relationship][:useritem_name],info: params[:relationship][:useritem_info])
+    item2.save
+    # item2.update(name: params[:relationship][:useritem_name],info: params[:relationship][:useritem_info])
     user.unfollow(current_user)
     redirect_to user
   end

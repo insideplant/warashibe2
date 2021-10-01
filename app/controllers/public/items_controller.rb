@@ -4,10 +4,9 @@ class Public::ItemsController < ApplicationController
     @item.user_id = current_user.id
     @item.save
     respond_to do |format|
-      format.html
-      format.json
+      format.html { redirect_to current_user }
+      format.json { render json: {name: @item.name, info: @item.info, itemimage: @item.itemimage}}
     end
-    redirect_to user_path current_user
   end
 
   def new

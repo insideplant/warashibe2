@@ -501,7 +501,7 @@ header h1 a {
 }
 
 #modal2.hidden{
-  transform: translate(0, -800px);
+  transform: translate(0, -1000px);
 }
 
 /* cropping image */
@@ -526,7 +526,10 @@ header h1 a {
 
 .cropper-area img {
   display: block;
-  max-width: 100%;
+}
+
+.cropper-container style {
+  height: 300px;
 }
 
 #beforeUpload {
@@ -546,7 +549,7 @@ header h1 a {
 .item_name {
   padding: 5px;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 10px;c
   background: white;
   height: 30px;
   border-radius: 10px;

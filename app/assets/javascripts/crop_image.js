@@ -1,15 +1,15 @@
 /*global $*/
+/*global location*/
 /*global Cropper*/
 
 $(function () {
-  let cropperImg = document.getElementById('cropper-img');
   const btn = document.getElementById('crop-btn');
   const modal3 = document.getElementById('modal3');
   const mask = document.querySelector('.mask');
   const item_image = document.getElementById('item_itemimage');
   const cropper_area = document.getElementById('cropper-area');
 
-  let image_viw = document.getElementById('cropper-img');
+  let beforeUpload = document.getElementById('beforeUpload');
 
   let fileName;
 
@@ -30,12 +30,13 @@ $(function () {
       return function(event){
         console.log(cropper_area);
         cropper_area.innerHTML = "";
-        let cropped_image = document.createElement('img');
-        console.log(cropped_image);
-        cropped_image.src = event.target.result;
-        cropped_image.id = "crop_image";
-        cropped_image.title = file.name;
-        cropper_area.appendChild(cropped_image);
+        let image = document.createElement('img');
+        console.log(image);
+        image.src = event.target.result;
+        image.id = "crop_image";
+        image.title = file.name;
+        image.height = '400';
+        cropper_area.appendChild(image);
         initCrop();
       };
     })(file);
@@ -50,10 +51,10 @@ $(function () {
         restore: false,
         guides: false,
         center: false,
-        highlight: false,
-        cropBoxMovable: false,
-        cropBoxResizable: false,
-        modal: true,
+        highlight: true,
+        cropBoxMovable: true,
+        cropBoxResizable: true,
+        modal: false,
         ready: function(){
           croppable = true;
         }
@@ -77,8 +78,10 @@ $(function () {
       croppedCanvas = cropper.getCroppedCanvas();
       let resultImgUrl = croppedCanvas.toDataURL();
       // let resultImgBlob = croppedCanvas.toBlob;
-      let result = document.getElementById('cpi');
-      result.src = resultImgUrl;
+      beforeUpload.innerHTML = '';
+      let preview = document.createElement('img');
+      beforeUpload.appendChild(preview);
+      preview.src = resultImgUrl;
     }
 
     btn.addEventListener('click', function(){
@@ -86,10 +89,8 @@ $(function () {
       mask.classList.add('hidden');
     });
 
-  $('#submit2').on('click',function(){
-    console.log(fileName);
-    console.log("AAA");
-    console.log(croppedCanvas.toBlob);
+  $('#submit').on('click',function(event){
+    event.preventDefault();
     croppedCanvas.toBlob(function(blob) {
       let blob_file = new File([blob], fileName,{type: "image/png"});
       let formData = new FormData();
@@ -112,6 +113,7 @@ $(function () {
         contentType: false
       })
       .done(function(response){
+        location.reload();
         console.debug("result" + response);
       })
       .fail(function(xhr){
