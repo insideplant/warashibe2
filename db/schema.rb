@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_130250) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.text "profile"
-    t.text "taget"
+    t.text "target"
     t.string "avatar"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

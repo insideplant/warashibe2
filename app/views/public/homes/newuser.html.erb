@@ -1,1 +1,23 @@
+
 <div class="mask2"></div>
+<div class="stage">
+  <div id="cards">
+    <div id="check" class="card">
+      <h1>ようこそ</h1>
+      <p>Warashibeを開始するにあたり、あなたが目標とするアイテムを設定しましょう。
+      こちらは、一度決定すると達成するまで2度と変更できません</p>
+
+      <%= form_with model: @user, id: 'target_form', remote: true do |f| %>
+        <div class="field" >
+          <div class="err_msg"></div>
+          <%= f.label :target %><br />
+          <%= f.text_field :target %>
+        </div>
+        <%= f.submit 'Next', id: 'target_submit'%>
+      <% end %>
+    </div>
+    <div id="retry" class="card"></div>
+  </div>
+</div>
+
+<%= javascript_include_tag "newuser.js" %>

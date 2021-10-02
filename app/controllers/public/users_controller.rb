@@ -25,6 +25,6 @@ class Public::UsersController < ApplicationController
 
   private
     def user_params
-      params.permit(:avatar)
+      params.permit(:avatar, :target)
     end
 end

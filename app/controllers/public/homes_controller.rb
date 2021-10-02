@@ -4,6 +4,6 @@ class Public::HomesController < ApplicationController
   end
 
   def newuser
-    
+    @user = User.find(current_user.id)
   end
 end

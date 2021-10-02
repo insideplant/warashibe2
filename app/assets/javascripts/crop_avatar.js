@@ -84,7 +84,7 @@ $(function () {
       let blob_file = new File([blob], fileName,{type: "image/png"});
       let formData = new FormData();
       formData.append('avatar', blob_file);
-
+      console.log(formData);
       $.ajax({
         url: '/users/' + user_id,
         type: 'put',
@@ -95,7 +95,6 @@ $(function () {
         contentType: false
       })
       .done(function(response){
-        location.reload();
         console.debug("result" + response);
       })
       .fail(function(xhr){

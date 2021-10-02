@@ -26,7 +26,6 @@
 
 body {
   height: 100%;
-  padding-top: 64px;
 }
 
 
@@ -58,6 +57,11 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
   border: 2px solid #FF9800;
   background-color: #ffffff;
 }
+
+main {
+  margin-top: 64px;
+}
+
 
 /* header */
 header {
@@ -213,7 +217,7 @@ header h1 a {
 /* top */
 
 .top_image {
-  margin-top: 64px;
+  padding-top: 64px;
   margin-bottom: 64px;
   text-align: center;
 }
@@ -280,9 +284,6 @@ header h1 a {
 .cancel {
   margin: 20px 0px;
 }
-
-
-
 
 /* modal login */
 
@@ -360,6 +361,59 @@ header h1 a {
   z-index: 2;
 }
 
+.stage {
+  margin: 100px auto;
+  width: 500px;
+  height: 380px;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+}
+
+.stage input {
+  width: 456px;
+  padding: 10px;
+  font-size: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+form .field {
+  margin-top: 20px;
+}
+
+#cards {
+  width: 1500px;
+  height: 380px;
+  transition: 0.8s;
+}
+
+.card {
+  width: 500px;
+  height: 380px;
+  padding: 20px;
+  background: white;
+  float: left;
+  border-radius: 10px;
+}
+
+.card + .card {
+  margin-left: 500px;
+}
+
+#cards.move {
+  transform: translate(-1000px, 0);
+}
+
+.form-invalid {
+  color: #f50000;
+  font-size: 20px;
+  padding-left: 12px;
+}
+
+.input-invalid {
+  border: 3px solid #f50000;
+}
 
 
 /*profile*/
@@ -433,9 +487,6 @@ header h1 a {
   text-align: center;
   margin-bottom: 50px;
 }
-
-
-
 
 #croppedImage {
   width: 300px;
@@ -561,7 +612,7 @@ header h1 a {
 .item_name {
   padding: 5px;
   width: 100%;
-  margin-bottom: 10px;c
+  margin-bottom: 10px;
   background: white;
   height: 30px;
   border-radius: 10px;
@@ -660,11 +711,9 @@ table th,table td{
 
 /* profile_image */
 
-
 #modal4.hidden{
   transform: translate(0, -600px);
 }
-
 
 #profile_input {
   display: none;
@@ -678,8 +727,9 @@ table th,table td{
 }
 
 #cropper-area2
-.cropper-face 
+.cropper-face
 {
     border-radius: 50%;
     color: black;
 }
+
