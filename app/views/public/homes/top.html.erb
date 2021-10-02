@@ -3,20 +3,24 @@
 </div>
 
 
-<% @items.each do |item|%>
-
-<div class="container">
-  <div class="flex-col2">
-    <div class="flex-child">
-      <%= link_to user_path(item.user) do%>
-        <%= image_tag item.itemimage.url, size: '160x120' %>
-      <% end %>
+<% @users.each do |user| %>
+  <% if user.item.present? %>
+    <div class="container">
+      <div class="flex-col2">
+        <div class="flex-child">
+          <%= link_to user_path(user) do%>
+            <%= image_tag user.item.itemimage.url, size: '160x120' %>
+          <% end %>
+        </div>
+        <div class="flex-child">
+          <%= user.item.itemname %>
+        </div>
+        <div class="flex-child">
+          <%= user.item.info %>
+        </div>
+      </div>
     </div>
-    <div class="flex-child">
-      <%= item.name %>
-    </div>
-  </div>
-</div>
+  <% end %>
 <% end %>
 
  <%= render "public/homes/login_modal" %>

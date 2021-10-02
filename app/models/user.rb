@@ -17,7 +17,7 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
-  
+
   # ユーザーをフォローする
   def follow(other_user)
     following << other_user

@@ -3,17 +3,16 @@
 /*global Cropper*/
 
 $(function () {
-  const btn = document.getElementById('crop-btn');
-  const modal3 = document.getElementById('modal3');
+  const profile_input = document.getElementById('profile_input');
+  const modal4 = document.getElementById('modal4');
   const mask = document.querySelector('.mask');
-  const item_image = document.getElementById('item_itemimage');
   const cropper_area = document.getElementById('cropper-area');
-  const beforeUpload = document.getElementById('beforeUpload');
+
   let fileName;
 
-
-  item_image.addEventListener('change', function(e){
-    modal3.classList.remove('hidden');
+  profile_input.addEventListener('change', function(e){
+    console.log('aaa');
+    modal4.classList.remove('hidden');
     mask.classList.remove('hidden');
     let file = e.target.files[0];
     fileName = file.name;
@@ -45,7 +44,7 @@ $(function () {
     function initCrop() {
       cropper = new Cropper(crop_image,{
         dragmode: 'move',
-        aspectRatio: 1.5/1,
+        aspectRatio: 1/1,
         restore: false,
         guides: false,
         center: false,
@@ -72,15 +71,6 @@ $(function () {
     }
 
     let croppedCanvas;
-    function cropping(e) {
-      croppedCanvas = cropper.getCroppedCanvas();
-      let resultImgUrl = croppedCanvas.toDataURL();
-      // let resultImgBlob = croppedCanvas.toBlob;
-      beforeUpload.innerHTML = '';
-      let preview = document.createElement('img');
-      beforeUpload.appendChild(preview);
-      preview.src = resultImgUrl;
-    }
 
     btn.addEventListener('click', function(){
       modal3.classList.add('hidden');
@@ -97,9 +87,6 @@ $(function () {
       formData.append('itemimage', blob_file);
       formData.append('itemname', item_name);
       formData.append('info', item_info);
-      console.log(blob);
-      console.log(blob_file);
-      console.log(item_name);
 
       $.ajax({
         url: '/items',

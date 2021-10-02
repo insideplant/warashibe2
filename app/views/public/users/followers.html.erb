@@ -45,12 +45,6 @@
         <td>
           <%= form_with(model: user.active_relationships.find_by(followed_id: current_user),
              html: { method: :delete }, remote: true) do |f| %>
-              <%= f.hidden_field :useritem_name, :value =>  user.item.name  %>
-              <%= f.hidden_field :useritem_info, :value =>  user.item.info  %>
-              <%= f.hidden_field :useritem_itemimage, :value =>  user.item.itemimage %>
-              <%= f.hidden_field :currentitem_name, :value => current_user.item.name %>
-              <%= f.hidden_field :currentitem_info, :value => current_user.item.info %>
-              <%= f.hidden_field :currentitem_itemimage, :value => current_user.item.itemimage %>
             <%= f.submit "交換する", class: "btn" %>
           <% end %>
         </td>

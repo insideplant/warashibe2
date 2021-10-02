@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
     @item.save
     respond_to do |format|
       format.html { redirect_to current_user }
-      format.json { render json: {name: @item.name, info: @item.info, itemimage: @item.itemimage}}
+      format.json { render json: {itemname: @item.itemname, info: @item.info, itemimage: @item.itemimage}}
     end
   end
 
@@ -14,6 +14,6 @@ class Public::ItemsController < ApplicationController
 
   private
     def item_params
-      params.permit(:name, :info, :itemimage)
+      params.permit(:itemname, :info, :itemimage)
     end
 end
