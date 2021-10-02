@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
+    get '/new_user', to: 'homes#newuser', as: 'nweuser'
     resources :items, only: [:create]
     resources :users do
       member do

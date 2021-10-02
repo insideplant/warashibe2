@@ -15,7 +15,16 @@ class Public::UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    respond_to do |format|
+      format.html { redirect_to current_user }
+      format.json { render json: {avatar: @user.avatar}}
+    end
   end
 
   private
+    def user_params
+      params.permit(:avatar)
+    end
 end

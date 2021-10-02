@@ -6,7 +6,7 @@ $(function () {
   const profile_input = document.getElementById('profile_input');
   const modal4 = document.getElementById('modal4');
   const mask = document.querySelector('.mask');
-  const cropper_area = document.getElementById('cropper-area');
+  const cropper_area2 = document.getElementById('cropper-area2');
 
   let fileName;
 
@@ -25,15 +25,15 @@ $(function () {
 
     reader.onload = (function(file){
       return function(event){
-        console.log(cropper_area);
-        cropper_area.innerHTML = "";
+        console.log(cropper_area2);
+        cropper_area2.innerHTML = "";
         let image = document.createElement('img');
         console.log(image);
         image.src = event.target.result;
         image.id = "crop_image";
         image.title = file.name;
         image.height = '400';
-        cropper_area.appendChild(image);
+        cropper_area2.appendChild(image);
         initCrop();
       };
     })(file);
@@ -71,26 +71,23 @@ $(function () {
     }
 
     let croppedCanvas;
+    function cropping(e) {
+      croppedCanvas = cropper.getCroppedCanvas();
+    }
+    const user_id = document.getElementById('profile_input').dataset.userid;
 
-    btn.addEventListener('click', function(){
-      modal3.classList.add('hidden');
-      mask.classList.add('hidden');
-    });
-
-  $('#submit').on('click',function(event){
-    event.preventDefault();
+  $('#avatar-btn').on('click',function(event){
+    console.log('avatar');
+    modal4.classList.add('hidden');
+    mask.classList.add('hidden');
     croppedCanvas.toBlob(function(blob) {
       let blob_file = new File([blob], fileName,{type: "image/png"});
       let formData = new FormData();
-      let item_name = document.getElementById('item_itemname').value;
-      let item_info = document.getElementById('item_info').value;
-      formData.append('itemimage', blob_file);
-      formData.append('itemname', item_name);
-      formData.append('info', item_info);
+      formData.append('avatar', blob_file);
 
       $.ajax({
-        url: '/items',
-        type: 'post',
+        url: '/users/' + user_id,
+        type: 'put',
         catch: false,
         dataType: 'json',
         processData: false,

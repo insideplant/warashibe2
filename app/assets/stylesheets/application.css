@@ -349,6 +349,18 @@ header h1 a {
   transform: translate(0, -800px);
 }
 
+/* newuser */
+.mask2 {
+  background-color: rgba(0,0,0,0.4);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+
 
 /*profile*/
 .mypage {
@@ -505,7 +517,7 @@ header h1 a {
 }
 
 /* cropping image */
-#modal3 {
+#modal3, #modal4 {
   border: solid;
   z-index: 2;
   background: #fff;
@@ -648,20 +660,6 @@ table th,table td{
 
 /* profile_image */
 
-#modal4 {
-  border: solid;
-  z-index: 2;
-  background: #fff;
-  width: 500px;
-  padding: 20px;
-  border-radius: 10px;
-  position: absolute;
-  top: 100px;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  transition: transform 0.4s;
-}
 
 #modal4.hidden{
   transform: translate(0, -600px);
@@ -671,7 +669,15 @@ table th,table td{
 #profile_input {
   display: none;
 }
-.cropper-view-box,
+
+#cropper-area2
+.cropper-view-box
+{
+    border-radius: 50%;
+    color: black;
+}
+
+#cropper-area2
 .cropper-face 
 {
     border-radius: 50%;

@@ -11,9 +11,4 @@ class Public::ItemsController < ApplicationController
 
   def new
   end
-
-  private
-    def item_params
-      params.permit(:itemname, :info, :itemimage)
-    end
 end

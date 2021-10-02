@@ -4,7 +4,7 @@
       <div class="profile">
         <div>
           <% if @user.avatar?%>
-            <%= image_tag @user.image, size: '100x100', class:"icon" %>
+            <%= image_tag @user.avatar.url, size: '100x100', class:"icon" %>
           <% else %>
             <%= image_tag 'default.png', size: '100x100', class:"icon" %>
           <% end %>
@@ -18,7 +18,8 @@
             <li>
               <label id="camera_btn">
                 <span class="material-icons md-dark">photo_camera</span>
-                <input type="file" id="profile_input">
+                <input type="file" id="profile_input" data-userid="<%= @user.id %>">
+                <%# binding.pry%>
               </label>
             </li>
           </ul>
@@ -103,10 +104,10 @@
   </div>
   
   <div id="modal4" class="hidden" >
-    <div id="cropper-area">
+    <div id="cropper-area2">
       <img id="cropp-image" src="">
     </div>
-    <button id="crop-btn">切り抜き</button>
+    <button id="avatar-btn">切り抜き</button>
   </div>
 
 </div>
@@ -115,4 +116,4 @@
 
 <%= javascript_include_tag "login.js" %>
 <%= javascript_include_tag "crop_image.js" %>
-<%= javascript_include_tag "crop_profileimage.js" %>
+<%= javascript_include_tag "crop_avatar.js" %>
