@@ -19,7 +19,7 @@
     <div class="card">
       <h1>Warashibe アイテム</h1>
       <p>Warashibeを開始するにあたり一番最初の交換アイテムとなります。
-      こちらのアイテムは一度決定すると二度と変更できません。</p>
+      こちらのアイテムは一度決定すると二度と変更できませんが、後で設定することも可能です。</p>
 
       <div id="beforeUpload">
         <span class="material-icons">image</span>
@@ -38,7 +38,7 @@
           <%= f.submit '登録',id: 'submit' %>
         </div>
         <div>
-          <%= link_to '後で登録', current_user %>
+          <%= link_to '後で登録', current_user, id: 'after_sign' %>
           <a link="#" id="retry">戻る</a>
         </div>
       <% end %>

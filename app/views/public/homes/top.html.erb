@@ -6,7 +6,7 @@
   <div class="wrap">
     <% @users.each do |user| %>
       <% if user.item.present? %>
-        <div class="item">
+        <div class="top_item">
           <%= link_to user_path(user) do%>
             <%= image_tag user.item.itemimage.url, size: '200x150' %>
           <% end %>

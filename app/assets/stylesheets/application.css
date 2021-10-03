@@ -362,9 +362,9 @@ header h1 a {
 }
 
 .stage {
-  margin: 100px auto;
+  margin: 20px auto;
   width: 500px;
-  height: 500px;
+  height: 550px;
   overflow: hidden;
   position: relative;
   z-index: 3;
@@ -392,13 +392,13 @@ header h1 a {
 
 #cards {
   width: 1500px;
-  height: 500px;
+  height: 550px;
   transition: 0.8s;
 }
 
 .card {
   width: 500px;
-  height: 500px;
+  height: 550px;
   padding: 20px;
   background: white;
   float: left;
@@ -423,6 +423,14 @@ header h1 a {
   border: 3px solid #f50000;
 }
 
+#after_sign {
+  text-decoration: none;
+}
+
+#retry {
+  margin-left: 20px;
+  cursor: pointer;
+}
 
 /*profile*/
 .mypage {
@@ -656,31 +664,31 @@ header h1 a {
   flex-wrap: wrap;
 }
 
-.item {
+.top_item {
   text-align: center;
   padding: 30px;
   width: 32%;
   background-color: #fff;
 }
 
-.item:not(:nth-child(3n+3)) {
+.top_item:not(:nth-child(3n+3)) {
   margin-right: 2%;
 }
 
-.item:nth-child(n+4) {
+.top_item:nth-child(n+4) {
   margin-top: 30px;
 }
 
 @media not all and (min-width: 768px) {
-  .item {
+  .top_item {
     width: 100%;
   }
 
-  .item:not(:nth-child(3n+3)) {
+  .top_item:not(:nth-child(3n+3)) {
     margin-right: 0;
   }
 
-  .item:nth-child(n+2) {
+  .top_item:nth-child(n+2) {
     margin-top: 30px;
   }
 }
@@ -709,6 +717,10 @@ table th,table td{
 
 
 /* profile_image */
+
+#camera_btn {
+  cursor: pointer;
+}
 
 #modal4.hidden{
   transform: translate(0, -600px);
