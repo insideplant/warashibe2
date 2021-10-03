@@ -18,7 +18,7 @@
       <div class="pc-menu">
         <nav>
           <ul>
-            <% if user_signed_in? %>
+            <% if user_signed_in? && current_user.target.present? %>
               <li><%= link_to "Warashibe",root_path %></li>
               <li><%= link_to "Mypage",current_user %></li>
               <li><%= link_to "Offers",followers_user_path(current_user) %></li>

@@ -11,9 +11,12 @@ class Public::RelationshipsController < ApplicationController
     item1 = Item.find(user.item.id)
     item1_1 = Item.find(user.item.id)
     item2 = Item.find(current_user.item.id)
-    item1.update(user_id: item2.user_id, name: item2.name, info: item2.info)
-    item2.update(user_id: item1_1.user_id, name: item1_1.name, info: item1_1.info)
-    user.unfollow(current_user)
+    item1.update(user_id: item2.user_id, itemname: item2.itemname, info: item2.info)
+    item2.update(user_id: item1_1.user_id, itemname: item1_1.itemname, info: item1_1.info)
+    followers = current_user.followers
+    followers.each do |follower|
+      follower.unfollow(current_user)
+    end
     redirect_to current_user
   end
 

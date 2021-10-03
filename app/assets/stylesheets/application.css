@@ -482,6 +482,10 @@ header h1 a {
   margin: 20px;
 }
 
+#user_taget {
+  padding: 10px;
+  text-align: center;
+}
 
 /* album */
 .album {
@@ -576,9 +580,9 @@ header h1 a {
 }
 
 /* cropping image */
-#modal3, #modal4 {
+.modal3, #modal4 {
   border: solid;
-  z-index: 2;
+  z-index: 4;
   background: #fff;
   width: 500px;
   padding: 20px;
@@ -591,7 +595,7 @@ header h1 a {
   transition: transform 0.4s;
 }
 
-#modal3.hidden{
+.modal3.hidden{
   transform: translate(0, -600px);
 }
 
@@ -646,52 +650,39 @@ header h1 a {
   border-radius: 10px;
 }
 
-/* フレックスボックスの基本設定 等間隔（両端揃え）折返しあり */
-[class^="flex-col"] {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+/* top flex*/
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-/* コンテンツ下のマージン */
-.flex-child { margin-bottom: 10px; }
-
-/* 各カラム毎のコンテンツと疑似要素の横幅 */
-.flex-col2 .flex-child { width: calc( (100% - 10px) / 2 ); }
-
-.flex-col3::after,
-.flex-col3 .flex-child { width: calc( (100% - 20px) / 3 ); }
-
-.flex-col4::before,
-.flex-col4::after,
-.flex-col4 .flex-child { width: calc( (100% - 30px) / 4 ); }
-
-/* 最終行は両端揃えにしない */
-.flex-col3::after,
-.flex-col4::before,
-.flex-col4::after { content: ""; }
-
-.flex-col4::before { order: 1; }
-
-/* レスポンシブ対応 */
-
-/* 991px以下で4列 → 3列 */
-@media screen and (max-width: 991px) {
-	.flex-col4::after,
-	.flex-col4 .flex-child { width: calc( (100% - 20px) / 3 ); }
+.item {
+  text-align: center;
+  padding: 30px;
+  width: 32%;
+  background-color: #fff;
 }
 
-/* 767px以下で4列・3列 → 2列 */
-@media screen and (max-width: 767px) {
-	.flex-col3 .flex-child,
-	.flex-col4 .flex-child { width: calc( (100% - 10px) / 2 ); }
+.item:not(:nth-child(3n+3)) {
+  margin-right: 2%;
 }
 
-/* 575px以下で全て1列 */
-@media screen and (max-width: 575px) {
-	.flex-col2 .flex-child,
-	.flex-col3 .flex-child,
-	.flex-col4 .flex-child { width: 100%; }
+.item:nth-child(n+4) {
+  margin-top: 30px;
+}
+
+@media not all and (min-width: 768px) {
+  .item {
+    width: 100%;
+  }
+
+  .item:not(:nth-child(3n+3)) {
+    margin-right: 0;
+  }
+
+  .item:nth-child(n+2) {
+    margin-top: 30px;
+  }
 }
 
 /* table */
@@ -723,7 +714,7 @@ table th,table td{
   transform: translate(0, -600px);
 }
 
-#profile_input {
+#file_hidden {
   display: none;
 }
 

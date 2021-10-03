@@ -2,26 +2,20 @@
   <%= image_tag 'warashibe.png', width: '20%', height: '20%' %>
 </div>
 
-
-<% @users.each do |user| %>
-  <% if user.item.present? %>
-    <div class="container">
-      <div class="flex-col2">
-        <div class="flex-child">
+<div class="container">
+  <div class="wrap">
+    <% @users.each do |user| %>
+      <% if user.item.present? %>
+        <div class="item">
           <%= link_to user_path(user) do%>
-            <%= image_tag user.item.itemimage.url, size: '160x120' %>
+            <%= image_tag user.item.itemimage.url, size: '200x150' %>
           <% end %>
+          <h2><%= user.item.itemname %></h2>
         </div>
-        <div class="flex-child">
-          <%= user.item.itemname %>
-        </div>
-        <div class="flex-child">
-          <%= user.item.info %>
-        </div>
-      </div>
-    </div>
-  <% end %>
-<% end %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
  <%= render "public/homes/login_modal" %>
 

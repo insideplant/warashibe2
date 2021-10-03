@@ -18,7 +18,7 @@
             <li>
               <label id="camera_btn">
                 <span class="material-icons md-dark">photo_camera</span>
-                <input type="file" id="profile_input" data-userid="<%= @user.id %>">
+                <input type="file" id="file_hidden" class="profile_input" data-userid="<%= @user.id %>">
               </label>
             </li>
           </ul>
@@ -29,6 +29,10 @@
           <button>アイテム登録</button>
         </div>
       <% end %>
+
+      <div id="user_taget">
+        <h1><%= @user.target %></h1>
+      </div>
 
       <div class="item">
         <h3>Item Name</h3>
@@ -57,11 +61,13 @@
         <% end %>
       </div>
 
-      <% unless current_user?(@user) || current_user.following.present? %>
+      <% unless current_user?(@user) %>
+        <% unless current_user.following?(@user) %>
           <%= form_with(model: current_user.active_relationships.build, local: true) do |f| %>
             <%= hidden_field_tag :followed_id, @user.id %>
             <%= f.submit "オファーする", class: "offer_button" %>
           <% end %>
+        <% end %>
       <% end %>
     </div>
   </div>
@@ -95,13 +101,13 @@
     </div>
   </div>
 
-  <div id="modal3" class="hidden" >
+  <div class="modal3 hidden" >
     <div id="cropper-area">
       <img id="cropp-image" src="">
     </div>
     <button id="crop-btn">切り抜き</button>
   </div>
-  
+
   <div id="modal4" class="hidden" >
     <div id="cropper-area2">
       <img id="cropp-image" src="">

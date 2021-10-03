@@ -7,7 +7,7 @@
       <p>Warashibeを開始するにあたり、あなたが目標とするアイテムを設定しましょう。
       こちらは、一度決定すると達成するまで2度と変更できません</p>
 
-      <%= form_with model: @user, id: 'target_form', remote: true do |f| %>
+      <%= form_with model: @user, id: 'target_form',data: {userid: @user.id }, class: 'profile_input', remote: true do |f| %>
         <div class="field" >
           <div class="err_msg"></div>
           <%= f.label :target %><br />
@@ -16,7 +16,7 @@
         <%= f.submit 'Next', id: 'target_submit'%>
       <% end %>
     </div>
-    <div id="retry" class="card">
+    <div class="card">
       <h1>Warashibe アイテム</h1>
       <p>Warashibeを開始するにあたり一番最初の交換アイテムとなります。
       こちらのアイテムは一度決定すると二度と変更できません。</p>
@@ -24,7 +24,7 @@
       <div id="beforeUpload">
         <span class="material-icons">image</span>
       </div>
-      <%= form_with model: @item, id: 'item_form', url: items_path do |f| %>
+      <%= form_with model: @item, id: 'item_form', remote: true  do |f| %>
         <%= f.file_field :itemimage %>
         <div class="field">
           <%= f.label :itemname %> </br>
@@ -39,12 +39,13 @@
         </div>
         <div>
           <%= link_to '後で登録', current_user %>
+          <a link="#" id="retry">戻る</a>
         </div>
       <% end %>
     </div>
   </div>
 </div>
-  <div id="modal3" class="hidden" >
+  <div class="modal3 hidden" >
     <div id="cropper-area">
       <img id="cropp-image" src="">
     </div>
@@ -53,3 +54,4 @@
   </div>
 
 <%= javascript_include_tag "newuser.js" %>
+<%= javascript_include_tag "crop_image.js" %>

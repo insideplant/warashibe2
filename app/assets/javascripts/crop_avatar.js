@@ -3,7 +3,7 @@
 /*global Cropper*/
 
 $(function () {
-  const profile_input = document.getElementById('profile_input');
+  const profile_input = document.querySelector('.profile_input');
   const modal4 = document.getElementById('modal4');
   const mask = document.querySelector('.mask');
   const cropper_area2 = document.getElementById('cropper-area2');
@@ -74,7 +74,7 @@ $(function () {
     function cropping(e) {
       croppedCanvas = cropper.getCroppedCanvas();
     }
-    const user_id = document.getElementById('profile_input').dataset.userid;
+    const user_id = profile_input.dataset.userid;
 
   $('#avatar-btn').on('click',function(event){
     console.log('avatar');
@@ -95,6 +95,7 @@ $(function () {
         contentType: false
       })
       .done(function(response){
+        location.reload();
         console.debug("result" + response);
       })
       .fail(function(xhr){

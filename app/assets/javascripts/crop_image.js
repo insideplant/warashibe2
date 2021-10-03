@@ -1,10 +1,10 @@
 /*global $*/
-/*global location*/
+/*global form_action*/
 /*global Cropper*/
 
 $(function () {
   const btn = document.getElementById('crop-btn');
-  const modal3 = document.getElementById('modal3');
+  const modal3 = document.querySelector('.modal3');
   const mask = document.querySelector('.mask');
   const item_image = document.getElementById('item_itemimage');
   const cropper_area = document.getElementById('cropper-area');
@@ -14,7 +14,7 @@ $(function () {
 
   item_image.addEventListener('change', function(e){
     modal3.classList.remove('hidden');
-    mask.classList.remove('hidden');
+    // mask.classList.remove('hidden');
     let file = e.target.files[0];
     fileName = file.name;
 
@@ -84,7 +84,7 @@ $(function () {
 
     btn.addEventListener('click', function(){
       modal3.classList.add('hidden');
-      mask.classList.add('hidden');
+      // mask.classList.add('hidden');
     });
 
   $('#submit').on('click',function(event){
@@ -101,6 +101,8 @@ $(function () {
       console.log(blob_file);
       console.log(item_name);
 
+      const user_id = document.querySelector('.profile_input').dataset.userid;
+
       $.ajax({
         url: '/items',
         type: 'post',
@@ -111,7 +113,7 @@ $(function () {
         contentType: false
       })
       .done(function(response){
-        location.reload();
+        window.location.href = '/users/' + user_id ;
         console.debug("result" + response);
       })
       .fail(function(xhr){
