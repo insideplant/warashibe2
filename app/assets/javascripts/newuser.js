@@ -50,6 +50,4 @@ $(function(){
   retry.addEventListener('click', function(){
     cards.className = '';
   });
-
-
 });

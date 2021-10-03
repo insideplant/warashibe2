@@ -364,13 +364,13 @@ header h1 a {
 .stage {
   margin: 100px auto;
   width: 500px;
-  height: 380px;
+  height: 500px;
   overflow: hidden;
   position: relative;
   z-index: 3;
 }
 
-.stage input {
+#target_form input {
   width: 456px;
   padding: 10px;
   font-size: 30px;
@@ -378,19 +378,27 @@ header h1 a {
   border-radius: 10px;
 }
 
-form .field {
+#item_form input,textarea {
+  width: 456px;
+  padding: 10px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+#target_form .field {
   margin-top: 20px;
 }
 
 #cards {
   width: 1500px;
-  height: 380px;
+  height: 500px;
   transition: 0.8s;
 }
 
 .card {
   width: 500px;
-  height: 380px;
+  height: 500px;
   padding: 20px;
   background: white;
   float: left;
